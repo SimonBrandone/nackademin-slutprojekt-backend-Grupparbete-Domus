@@ -1,11 +1,12 @@
+// How to start use data from .env
+require('dotenv').config()
+
 // Import all Routes
-// const routerJwt = require('./routes/jwt')
+const routerJwt = require('./routes/jwt')
 const routerUser = require('./routes/users')
 // const routerOrder = require('./routes/orders')
 // const routerProduct = require('./routes/products')
 
-// How to start use data from .env
-require('dotenv').config()
 
 // Uppkoppling till db
 const express = require('express')
@@ -29,7 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use( express.static('public') )
 
 // This to use different Routes.
-// app.use(routerJwt)
+app.use(routerJwt)
 app.use(routerUser)
 // app.use(routerOrder)
 // app.use(routerProduct)

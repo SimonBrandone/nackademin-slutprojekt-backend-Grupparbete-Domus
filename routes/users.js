@@ -5,14 +5,12 @@ const express = require('express')
 const router = express.Router()
 
 // A Route to be able to register a user and save it to the database.
-router.post('/api/register/', (req, res) => {
-// måste jag göra error hantering här eller räcker det att göra det i .save??
-
-    // console.log(req.body)
-    let newUser = new User ({
+router.post('/api/register/', async (req, res) => {
+    let newUser = await new User ({
         email: req.body.email,
-        pw: req.body.pw,
+        password: req.body.password,
         name: req.body.name,
+        // The default value is "customer" and if u want to register an admin u hardcode that into postman for example.
         role: req.body.role,
         adress: {
             street: req.body.street,
@@ -24,11 +22,13 @@ router.post('/api/register/', (req, res) => {
         //     ref: 'Order'
         // }]
     }) 
-    newUser.save((err, newUser) => {
-        // varför kommer jag inte in i denna error hantering
-        if (err) res.send('Något gick fel när du försökte spara en ny användare')
+
+    if (newUser.password) {
+        newUser.save();
         res.send(`Ny användare tillagd i databasen: ${newUser.name}`)
-    })
+    } else {
+        res.send('Något gick fel när du försökte spara en ny användare')
+    }
 })
 
 module.exports = router
