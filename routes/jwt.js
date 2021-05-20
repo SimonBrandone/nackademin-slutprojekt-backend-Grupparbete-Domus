@@ -13,23 +13,32 @@ router.post('/api/auth', async (req, res) => {
 
     //Payload för Usern
     if (user) {
-        const payload = {
-            name: user.name,
-            expire: Math.floor(Date.now() / 1000) + (60 * 5),
-            role: user.role
-        }
-        console.log(payload)
+        // Kolla om lösenordet stämmer. 
+        bcrypt.compare(req.body.password, user.password, function (err, result) {
+            if (err) res.json(err)
 
-        //Signa och skicka token
-        const token = jwt.sign(payload, process.env.SECRET)
-        res.cookie('auth-token', token)
-        res.json('Välkommen ' + payload.name)
-    } else {
-        //Om du skriver fel namn i Insomnia
-        res.send('Credentials not correct')
+            if (result !== false) {
+                console.log(result)
+                const payload = {
+                    name: user.name,
+                    exp: Math.floor(Date.now() / 1000) + (60 * 5),
+                    role: user.role
+                }
+
+                // I så fall, signa och skicka token.
+                const token = jwt.sign(payload, process.env.SECRET)
+                res.cookie('auth-token', token)
+                res.send("Välkommen " + user.username)
+
+            } else {
+                res.send("Dina credentials stämde inte")
+            }
+        })
+
     }
-
 })
 
 
 module.exports = router
+
+

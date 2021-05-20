@@ -28,9 +28,9 @@ router.post('/api/register/', async (req, res) => {
         //     ref: 'Order'
         // }]
     })
-    if (newUser.name === String) {
+    if (newUser.name == String) {
         await newUser.save();
-        res.send(`Ny användare tillagd ${newUser}`)
+        res.send(`Ny användare tillagd ${newUser.name}`)
     } else if (newUser = null) {
         console.log("fel")
         res.status(400).send(err)
