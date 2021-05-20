@@ -1,7 +1,7 @@
 // Import all Routes
 const routerJwt = require('./routes/jwt')
 const routerUser = require('./routes/users')
-// const routerOrder = require('./routes/orders')
+const routerOrder = require('./routes/orders')
 const routerProduct = require('./routes/products')
 
 // How to start use data from .env
@@ -36,7 +36,7 @@ app.use(express.static('public'))
 // This to use different Routes.
 app.use(routerJwt)
 app.use(routerUser)
-// app.use(routerOrder)
+app.use(routerOrder)
 app.use(routerProduct)
 
 app.listen(process.env.PORT || 5000, () => console.log("It's running birch!"))
