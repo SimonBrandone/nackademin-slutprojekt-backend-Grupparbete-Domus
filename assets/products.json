@@ -1,6 +1,6 @@
 [
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "1",
         "title": "The Ash Hood",
         "price": 699,
         "shortDesc": "Unisex",
@@ -8,7 +8,7 @@
         "imgFile": "hoodie-ash.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "2",
         "title": "Red Hood",
         "price": 699,
         "shortDesc": "Unisex",
@@ -16,7 +16,7 @@
         "imgFile": "hoodie-fire.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "3",
         "title": "Ocean",
         "price": 699,
         "shortDesc": "Unisex",
@@ -24,7 +24,7 @@
         "imgFile": "hoodie-ocean.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "4",
         "title": "Gretas Fury",
         "price": 999,
         "shortDesc": "Unisex",
@@ -32,7 +32,7 @@
         "imgFile": "skateboard-greta.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "5",
         "title": "Custom Fit",
         "price": 1299,
         "shortDesc": "Unisex",
@@ -40,7 +40,7 @@
         "imgFile": "skateboard-generic.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "6",
         "title": "Rollin",
         "price": 99,
         "shortDesc": "Unisex",
@@ -48,7 +48,7 @@
         "imgFile": "wheel-rocket.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "7",
         "title": "Roll",
         "price": 99,
         "shortDesc": "Unisex",
@@ -56,7 +56,7 @@
         "imgFile": "wheel-spinner.png"
     },
     {
-        "_id": "39y7gbbZk1u4ABnv",
+        "_id": "8",
         "title": "Whell",
         "price": 99,
         "shortDesc": "Unisex",
