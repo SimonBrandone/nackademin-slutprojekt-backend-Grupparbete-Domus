@@ -6,16 +6,16 @@ const router = express.Router()
 
 // A Route to be able to register a user and save it to the database.
 router.post('/api/register/', async (req, res) => {
-    // måste jag göra error hantering här eller räcker det att göra det i .save??
+
 
     // Hash password ?? 
     const salt = await bcrypt.genSalt(10)
-    const hashPassword = await bcrypt.hash(req.body.pw, salt)
+    const hashPassword = await bcrypt.hash(req.body.password, salt)
 
     console.log(req.body)
     let newUser = new User({
         email: req.body.email,
-        pw: hashPassword,
+        password: hashPassword,
         name: req.body.name,
         role: req.body.role,
         adress: {
@@ -23,12 +23,8 @@ router.post('/api/register/', async (req, res) => {
             zip: req.body.zip,
             city: req.body.city
         }
-        // orderHistory: [{
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'Order'
-        // }]
     })
-    if (newUser.name == String) {
+    if (newUser.email) {
         await newUser.save();
         res.send(`Ny användare tillagd ${newUser.name}`)
     } else if (newUser = null) {

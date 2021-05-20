@@ -1,44 +1,60 @@
+// Configuration to be able to use .env files
+require('dotenv').config()
+
+// Import model
 const User = require('../modules/usersModel')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+
 const express = require('express')
+const app = express()
 const router = express.Router()
 
+// Bcrypt for password check
+const bcrypt = require('bcryptjs')
 
-router.post('/api/auth', async (req, res) => {
 
-    //Hämta inlogg och kontrollera
-    const user = await User.findOne({ name: req.body.name })
-    console.log(user)
+// Token
+const jwt = require('jsonwebtoken')
 
-    //Payload för Usern
+// cookies
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+router.post('/api/auth/', async (req, res) => {
+
+
+    //Letar bara upp User via email.
+    const user = await User.findOne({
+        email: req.body.email
+    })
+
+
     if (user) {
-        // Kolla om lösenordet stämmer. 
+
+        console.log(user)
+        console.log(req.body.password)
+
+
+        //Jämför hashade req.password mot det du skriver in i Insomnia. 
         bcrypt.compare(req.body.password, user.password, function (err, result) {
             if (err) res.json(err)
 
+            //om resultatet inte är false, signa och skicka token. 
             if (result !== false) {
                 console.log(result)
-                const payload = {
-                    name: user.name,
-                    exp: Math.floor(Date.now() / 1000) + (60 * 5),
-                    role: user.role
-                }
+                const payload = user.role
 
-                // I så fall, signa och skicka token.
-                const token = jwt.sign(payload, process.env.SECRET)
+                const token = jwt.sign(payload, `${process.env.SECRET}`)
                 res.cookie('auth-token', token)
-                res.send("Välkommen " + user.username)
-
+                res.send(`Välkommen ${user.name}`)
             } else {
-                res.send("Dina credentials stämde inte")
+                res.send('Fel lösen eller email')
             }
         })
 
     }
+
+
 })
 
 
 module.exports = router
-
-
