@@ -7,5 +7,68 @@
         "longDesc": "Skate ipsum dolor sit amet...",
         "imgFile": "skateboard-greta.png"
     }
+    ,
+    {
+        "_id": "UpSF2Y3XnrGPzgc6",
+        "title": "Wave Wheel",
+        "price": 999,
+        "shortDesc": "Wheel",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "wheel-wave.7ae85ee6.png"
+    }
+    ,
+    {
+        "_id": "imNYYiQywLYelOvO",
+        "title": "White Wheel",
+        "price": 999,
+        "shortDesc": "Wheel",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "wheel-spinner.4c4b7208.png"
+    }
+    ,
+    {
+        "_id": "TfgDIT5fvMmoMfVL",
+        "title": "Rocket Wheel",
+        "price": 999,
+        "shortDesc": "Wheel",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "wheel-rocket.a369221f.png"
+    }
+    ,
+    {
+        "_id": "YbzOffh6TDJNVL5Z",
+        "title": "Great Generico",
+        "price": 999,
+        "shortDesc": "Board",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "skateboard-generic.10eb1082.png"
+    }
+    ,
+    {
+        "_id": "UCYUVqX4yXWUvVxd",
+        "title": "Blue Hoodie",
+        "price": 999,
+        "shortDesc": "Unisex Hoodie",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "hoodie-ocean.68b3445e.png"
+    }
+    ,
+    {
+        "_id": "yJWYzIrDHyG9Ov4r",
+        "title": "Red Hoodie",
+        "price": 999,
+        "shortDesc": "Unisex Hoodie",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "hoodie-fire.b961747e.png"
+    }
+    ,
+    {
+        "_id": "vAXd4tBtUH4QmGaO",
+        "title": "Black Hoodie",
+        "price": 999,
+        "shortDesc": "Unisex Hoodie",
+        "longDesc": "Skate ipsum dolor sit amet...",
+        "imgFile": "hoodie-ash.9845e671.png"
+    }
 ]
 
