@@ -6,6 +6,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // repeatPassword: {
+    //     type: String,
+    //     required: true
+    // },
     name: String,
     role: {
         type: String,
@@ -17,7 +21,7 @@ const userSchema = mongoose.Schema({
         city: String
     },
     orderHistory: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Array,
         ref: 'Order'
     }]
 })
