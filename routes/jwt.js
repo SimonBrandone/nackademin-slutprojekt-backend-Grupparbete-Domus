@@ -8,6 +8,10 @@ const express = require('express')
 const app = express()
 const router = express.Router()
 
+// Bcrypt for password check
+const bcrypt = require('bcryptjs')
+
+
 // Token
 const jwt = require('jsonwebtoken')
 
@@ -16,31 +20,44 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
 router.post('/api/auth/', async (req, res) => {
-    const user = await User.findOne({
-                name: req.body.name, password: req.body.password
-            })
-    if (user) {
-        const payload = {
-            role: user.role
-        }
-        const token = jwt.sign(payload, `${process.env.SECRET}`)
-        console.log(token)
-        res.cookie('auth-token', token)
-        res.send(user)
 
-    } else {
-        res.send('Fel')
+
+    //Letar bara upp User via email.
+    const user = await User.findOne({
+        email: req.body.email
+    })
+
+
+    if (user) {
+
+        console.log(user)
+        console.log(req.body.password)
+
+
+        //Jämför hashade req.password mot det du skriver in i Insomnia. 
+        bcrypt.compare(req.body.password, user.password, function (err, result) {
+            if (err) res.json(err)
+
+            //om resultatet inte är false, signa och skicka token. 
+            if (result !== false) {
+                console.log(result)
+                const payload = user.role
+
+                const token = jwt.sign(payload, `${process.env.SECRET}`)
+                res.cookie('auth-token', token)
+                res.send({
+                            token: token,
+                            user
+                        })
+            } else {
+                res.send('Fel lösen eller email')
+            }
+        })
+
     }
+
+
 })
 
-// try {
-//     let payload = jwt.verify(process.env.TOKEN, process.env.PW);
-//     if(payload.role == 'admin'){
-//         console.log(payload)
-//     }
-//   } catch(err) {
-//     console.log(err)
-//   }
 
 module.exports = router
-
