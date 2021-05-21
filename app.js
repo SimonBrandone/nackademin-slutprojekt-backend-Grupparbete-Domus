@@ -27,8 +27,11 @@ app.use(cookieParser())
 
 // Middleware
 
+
 // This one to be able to read req.body better.
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+
 
 // This to use the frontend files.
 app.use(express.static('public'))

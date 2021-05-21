@@ -2,17 +2,22 @@
 const User = require('../modules/usersModel')
 const bcrypt = require('bcryptjs')
 const express = require('express')
+const { json } = require('express')
 const router = express.Router()
 
 // A Route to be able to register a user and save it to the database.
 router.post('/api/register/', async (req, res) => {
 
 
+
+
+
     // Hash password ?? 
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(req.body.password, salt)
+    console.log(res.statusCode)
 
-    console.log(req.body)
+
     let newUser = new User({
         email: req.body.email,
         password: hashPassword,
@@ -30,6 +35,7 @@ router.post('/api/register/', async (req, res) => {
     } else if (newUser = null) {
         console.log("fel")
         res.status(400).send(err)
+        res.json('Här är fel')
     }
 })
 

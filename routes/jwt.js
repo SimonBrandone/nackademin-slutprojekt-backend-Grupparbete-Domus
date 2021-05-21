@@ -15,12 +15,13 @@ const bcrypt = require('bcryptjs')
 // Token
 const jwt = require('jsonwebtoken')
 
+
+
 // cookies
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
 router.post('/api/auth/', async (req, res) => {
-
 
     //Letar bara upp User via email.
     const user = await User.findOne({
@@ -42,16 +43,22 @@ router.post('/api/auth/', async (req, res) => {
             if (result !== false) {
                 console.log(result)
                 const payload = user.role
+                console.log(payload)
 
                 const token = jwt.sign(payload, `${process.env.SECRET}`)
                 res.cookie('auth-token', token)
-                res.send(`Välkommen ${user.name}`)
+                res.send({
+                    token,
+                    user
+                })
+
             } else {
                 res.send('Fel lösen eller email')
             }
         })
 
     }
+
 
 
 })

@@ -11,8 +11,6 @@ router.post('/api/orders', async (req, res) => {
 
 
 
-
-
     console.log(req.body)
     let newOrder = new Order({
         status: req.body.status,
@@ -26,6 +24,7 @@ router.post('/api/orders', async (req, res) => {
     try {
         newOrder.save()
         res.send('Order Created')
+        res.json('order created')
     } catch (err) {
         res.send(err)
     }
