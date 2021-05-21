@@ -13,7 +13,7 @@ router.post('/api/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(req.body.password, salt)
 
-    let newUser = await new User ({
+    let newUser = await new User({
         email: req.body.email,
         password: hashPassword,
         // repeatPassword: req.body.repeatPassword,
@@ -31,7 +31,7 @@ router.post('/api/register', async (req, res) => {
         // }]
         // orderHistory: orderHistory._id
 
-    }) 
+    })
 
     // if (newUser.password) {
     //     newUser.save();
