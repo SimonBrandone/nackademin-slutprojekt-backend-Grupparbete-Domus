@@ -1,11 +1,13 @@
-const productsFile = require('../assets/products.json');
 const express = require('express')
-const products = express.Router();
+const router = express.Router();
+const Products = require('../modules/productsModel');
+const mongoose = require('mongoose');
 
-products.get('/api/products', (req, res) => {
+
+router.get('/api/products', (req, res) => {
     res.json(productsFile)
 })
 
 
 
-module.exports = products
+module.exports = router
